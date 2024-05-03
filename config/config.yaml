@@ -1,0 +1,63 @@
+# config.yaml
+unet:
+  learning_rate: 0.001
+  mean: [-0.2417, 0.8531, 0.1789]
+  std: [0.9023, 1.1647, 1.3271]
+  print_freq: 20
+  name_net: 'unet'  
+  batch_size: 32
+  num_workers: 8
+  epochs: 10
+  num_classes: 10
+  resize_height: 256
+  resize_width: 256
+  b_factor: 1
+  alpha: 1
+  load_saved_model: false
+  threshold_val_dice: 0.3
+  path_to_pretrained_model: ''
+  project_folder: './'
+  data_folder: 'root/autodl-tmp'
+  results_folder: './exp/model_unet'
+
+pspnet:
+  learning_rate: 0.001
+  mean: [-0.2417, 0.8531, 0.1789]
+  std: [0.9023, 1.1647, 1.3271]
+  print_freq: 20
+  name_net: 'pspnet'
+  batch_size: 32
+  num_workers: 8
+  epochs: 15
+  num_classes: 10
+  resize_height: 256
+  resize_width: 256
+  b_factor: 1
+  alpha: 1
+  load_saved_model: false
+  threshold_val_dice: 0.3
+  path_to_pretrained_model: ''
+  project_folder: './'
+  data_folder: 'root/autodl-tmp'
+  results_folder: './exp/model_pspnet'
+
+deeplab:
+  learning_rate: 0.001
+  mean: [-0.2417, 0.8531, 0.1789]
+  std: [0.9023, 1.1647, 1.3271]
+  print_freq: 20
+  name_net: 'pspnet'
+  batch_size: 32
+  num_workers: 8
+  epochs: 15
+  num_classes: 10
+  resize_height: 256
+  resize_width: 256
+  b_factor: 1
+  alpha: 1
+  load_saved_model: false
+  threshold_val_dice: 0.3
+  path_to_pretrained_model: ''
+  project_folder: './'
+  data_folder: 'root/autodl-tmp'
+  results_folder: './exp/model_deeplab'
