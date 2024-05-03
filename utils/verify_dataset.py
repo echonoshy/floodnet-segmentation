@@ -5,15 +5,31 @@ def verify_dataset():
     Checks if the dataset is valid:
     1. Verify that the number of items in each subset is as expected.
     2. Ensure that labels and original images in each subset match each other.
+    3. Arrange dataset folder tree as follow.
+
+        dataset tree:
+            |- train
+                |- *.lab_png    # label
+                |- *.jpg        # orignal
+            |- val 
+                |- *.lab_png
+                |- *.jpg
+            |- test
+                |- *.lab_png
+                |- *.jpg
+
     """
     
     # Paths for training, validation, and test sets
-    train_lab = glob("./dataset/train/train-label-img/*")
-    train_org = glob("./dataset/train/train-org-img/*")
-    val_lab = glob("./dataset/val/val-label-img/*")
-    val_org = glob("./dataset/val/val-org-img/*")
-    test_lab = glob("./dataset/test/test-label-img/*")
-    test_org = glob("./dataset/test/test-org-img/*")
+    dataset_dir = "../autodl-tmp"
+    
+    train_lab = glob(f"{dataset_dir}/train/*.png")
+    train_org = glob(f"{dataset_dir}/train/*.jpg")
+    val_lab = glob(f"{dataset_dir}/val/*.png")
+    val_org = glob(f"{dataset_dir}/val/*.jpg")
+    test_lab = glob(f"{dataset_dir}/test/*.png")
+    test_org = glob(f"{dataset_dir}/test/*.jpg")
+
 
     # Verify the number of items in each set
     assert len(train_lab) == len(train_org) == 1445, "Training set sizes do not match."
