@@ -8,11 +8,15 @@ import pandas as pd
 import gc
 from torch.backends import cudnn
 
+# 引入必要的模块
 from core.dataset import FloodNetDataset
 from core.metrics import dice_coef
 from core.model import set_model, set_loader, save_model
 from core.opt import opt
+from core.logger import setup_logging
 
+# 设置日志
+logger = setup_logging()
 
 def train(model, train_loader, val_loader, criterion, optimizer, epoch, opt):
     model.train()
@@ -26,7 +30,6 @@ def train(model, train_loader, val_loader, criterion, optimizer, epoch, opt):
                 mask = mask.cuda(non_blocking=True)
 
             output = model(image) if opt.name_net != 'deeplab' else model(image)['out']
-
             mask = torch.squeeze(mask, dim=1)
             loss = criterion(output, mask.long())
             loss.backward()
@@ -35,18 +38,21 @@ def train(model, train_loader, val_loader, criterion, optimizer, epoch, opt):
             total_loss += loss.item() * mask.size(0)
 
             if (idx + 1) % opt.print_freq == 0:
-                print(f'Fully_supervised-Train Epoch: [{epoch}/{opt.epochs}], lr: {optimizer.param_groups[0]["lr"]:.6f}, Loss: {total_loss / total_num:.4f}')
-                sys.stdout.flush()
+                logger.info(f'Fully_supervised-Train Epoch: [{epoch}/{opt.epochs}], lr: {optimizer.param_groups[0]["lr"]:.6f}, Loss: {total_loss / total_num:.4f}')
     except Exception as e:
-        print(f"Error during training: {e}")
-        sys.exit(1)
+        logger.error(f"Error during training: {e}")
+        raise
 
     gc.collect()
     torch.cuda.empty_cache()
-    val_loss, val_dice = val(model, val_loader, criterion, opt)
-    print("Epoch total loss", total_loss / total_num)
-    train_loss = total_loss / total_num
-    return train_loss, val_loss, val_dice 
+    try:
+        val_loss, val_dice = val(model, val_loader, criterion, opt)
+        logger.info(f"Epoch {epoch}: Total Loss: {total_loss / total_num:.4f}, Validation Loss: {val_loss:.4f}, Validation DICE: {val_dice:.4f}")
+    except Exception as e:
+        logger.error(f"Error during validation: {e}")
+        raise
+
+    return total_loss / total_num, val_loss, val_dice 
 
 def val(model, val_loader, criterion, opt):
     model.eval()
@@ -60,7 +66,6 @@ def val(model, val_loader, criterion, opt):
                     mask = mask.cuda(non_blocking=True)
 
                 output = model(image) if opt.name_net != 'deeplab' else model(image)['out']
-                
                 mask = torch.squeeze(mask, dim=1)
                 loss = criterion(output, mask.long())
                 total_num += mask.size(0)
@@ -70,10 +75,11 @@ def val(model, val_loader, criterion, opt):
 
         val_loss /= total_num
         val_dice /= len(val_loader)
-        print(f"Validation loss: {val_loss:.4f}, Validation DICE coefficient: {val_dice:.4f}")
+        logger.info(f"Validation loss: {val_loss:.4f}, Validation DICE coefficient: {val_dice:.4f}")
     except Exception as e:
-        print(f"Error during validation: {e}")
-        sys.exit(1)
+        logger.error(f"Error during validation: {e}")
+        raise
+
     return val_loss, val_dice
 
 def save_plots(train_loss_values, val_loss_values, val_dices, opt):
@@ -105,8 +111,8 @@ def save_plots(train_loss_values, val_loss_values, val_dices, opt):
         plt.savefig(os.path.join(opt.results_folder, f'{opt.name_net}_val_dice.png'))
         plt.close()
     except Exception as e:
-        print(f"Error during plotting: {e}")
-        sys.exit(1)
+        logger.error(f"Error during plotting: {e}")
+        raise
 
 def run():
     try:
@@ -114,7 +120,7 @@ def run():
         model, criterion, optimizer = set_model(opt)
         save_file = os.path.join(opt.results_folder, opt.name_net + '_last.pth')
 
-        print("Start training ...")
+        logger.info("Start training ...")
         best_val_dice = opt.threshold_val_dice
         train_loss_values, val_loss_values, val_dices = [], [], []
 
@@ -125,7 +131,7 @@ def run():
             val_dices.append(val_dice)
 
             if val_dice > best_val_dice:
-                print(f"Saving/updating current best model at epoch={epoch}")
+                logger.info(f"Saving/updating current best model at epoch={epoch}")
                 save_model(model, optimizer, opt, epoch, os.path.join(opt.results_folder, opt.name_net + '_best.pth'))
                 best_val_dice = val_dice
 
@@ -133,8 +139,8 @@ def run():
 
         save_plots(train_loss_values, val_loss_values, val_dices, opt)
     except Exception as e:
-        print(f"Unhandled error in run function: {e}")
-        sys.exit(1)
+        logger.error(f"Unhandled error in run function: {e}")
+        raise
 
 if __name__ == "__main__":
     run()
