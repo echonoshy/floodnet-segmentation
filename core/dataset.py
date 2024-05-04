@@ -8,16 +8,16 @@ class FloodNetDataset(Dataset):
     Dataset class for FloodNet, a dataset for image segmentation tasks related to flood scenarios.
     classes:
             
-            "background",
-            "building-flooded",
-            "building non-flooded",
-            "road flooded",
-            "road non-flooded",
-            "water",
-            "tree",
-            "vehicle",
-            "pool",
-            "grass"
+        "background",
+        "building-flooded",
+        "building non-flooded",
+        "road flooded",
+        "road non-flooded",
+        "water",
+        "tree",
+        "vehicle",
+        "pool",
+        "grass"
             
     Attributes:
         base_folder (str): The directory containing the training images.

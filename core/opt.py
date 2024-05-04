@@ -3,11 +3,11 @@ import yaml
 
 class Opt:
     def __init__(self, config_path='config/config.yaml', model_name='unet'):
+        # Load configuration from YAML file specific to the model name provided
         config = self.read_config(config_path)
-        
-        # Access model-specific configuration
         model_config = config[model_name]
 
+        # Assign model-specific configuration values to class attributes
         self.learning_rate = model_config['learning_rate']
         self.mean = model_config['mean']
         self.std = model_config['std']
@@ -28,20 +28,19 @@ class Opt:
         self.data_folder = model_config['data_folder']
         self.results_folder = os.path.join(self.project_folder, model_config['results_folder'])
         
-        # Ensure the results folder exists
+        # Create the results directory if it does not exist
         os.makedirs(self.results_folder, exist_ok=True)
 
     def read_config(self, path):
+        # Read and return the configuration from a YAML file
         with open(path, 'r') as file:
             config = yaml.safe_load(file)
         return config
 
-
-
-# todo: 临时写死
+# Initialize Opt
+# TODO: Temp fix model_name for easy debugging
 model_name = "unet"
 config_path = 'config/config.yaml' 
 opt = Opt(config_path, model_name)
-
 
 print(f"Loaded configuration for model: {opt.name_net}")
