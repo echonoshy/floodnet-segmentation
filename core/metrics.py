@@ -30,4 +30,5 @@ def dice_coef(y_pred, y_true, epsilon=1e-7):
         dice_scores.append(score)  # Append the score for this class
 
     # Return the average Dice Coefficient across all classes
-    return np.mean(dice_scores).item() if dice_scores else 0
+    # return np.mean(dice_scores).item() if dice_scores else 0
+    return (sum(dice_scores) / len(dice_scores)).item()
