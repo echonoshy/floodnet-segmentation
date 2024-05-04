@@ -17,7 +17,8 @@ unet:
   threshold_val_dice: 0.3
   path_to_pretrained_model: ''
   project_folder: './'
-  data_folder: 'root/autodl-tmp'
+  # data_folder: '/root/autodl-tmp'
+  data_folder: './data'
   results_folder: './exp/model_unet'
 
 pspnet:
@@ -38,7 +39,7 @@ pspnet:
   threshold_val_dice: 0.3
   path_to_pretrained_model: ''
   project_folder: './'
-  data_folder: 'root/autodl-tmp'
+  data_folder: '/root/autodl-tmp'
   results_folder: './exp/model_pspnet'
 
 deeplab:
