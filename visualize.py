@@ -29,7 +29,7 @@ def unnormalize(tensor, mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3
     std = torch.tensor(std, device=tensor.device, dtype=tensor.dtype)
     return tensor * std + mean
 
-# Load a specific model and weights based on name
+# Load a specific model and weights based on the name
 def load_model(model_name):
     opt.name_net = model_name
     model, _, _ = set_model(opt)
@@ -41,16 +41,16 @@ def load_model(model_name):
         model = model.cuda()
     return model
 
-# Visualize predictions
-def visualize_predictions(model, image_paths, mask_paths, img_size=(512, 512)):
+# Visualize predictions with a single model
+def visualize_predictions(model, image_paths, mask_paths, opt=opt):
     # Define image and mask transformations
     img_transform = T.Compose([
-        T.Resize(img_size),
+        T.Resize((opt.resize_height, opt.resize_width)),
         T.ToTensor(),
-        T.Normalize(mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271])
+        T.Normalize(mean=opt.mean, std=opt.std)
     ])
     mask_transform = T.Compose([
-        T.Resize(img_size),
+        T.Resize((opt.resize_height, opt.resize_width)),
         T.PILToTensor()
     ])
 
@@ -63,22 +63,28 @@ def visualize_predictions(model, image_paths, mask_paths, img_size=(512, 512)):
     with torch.no_grad():
         for i in range(n):
             # Load and process images/masks
-            img = img_transform(Image.open(image_paths[i])).unsqueeze(0)
+            img = img_transform(Image.open(image_paths[i]))
             mask = mask_transform(Image.open(mask_paths[i]))
 
             # Move image to GPU if available
             if torch.cuda.is_available():
-                img = img.cuda()
+                img = img.cuda(non_blocking=True)
+            
+            if opt.name_net == 'deeplab': 
+                pred = model(img[None,:,:,:])['out']
 
-            # Make predictions
-            pred = model(img)['out'] if hasattr(model, 'aux_classifier') else model(img)
-            pred = torch.squeeze(pred).argmax(dim=0).cpu().detach().numpy()
+            else:
+                pred = model(img[None,:,:,:])
+                
+            pred = torch.squeeze(pred)
+            pred = pred.argmax(0).squeeze()
+            pred = pred.cpu().detach().numpy()
+
 
             # Unnormalize and visualize
-            img_unnorm = unnormalize(img.squeeze().cpu(), mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271])
-            axs[i][0].imshow(np.transpose(img_unnorm, (1, 2, 0)))
-            axs[i][1].imshow(mask.squeeze(), cmap=custom_cmap, vmin=0, vmax=9)
-            axs[i][2].imshow(pred, cmap=custom_cmap, vmin=0, vmax=9)
+            axs[i][0].imshow(np.squeeze(unnormalize(np.transpose(img.squeeze().cpu(),(1,2,0)))))
+            axs[i][1].imshow(mask.squeeze(), cmap = custom_cmap, vmin = 0, vmax = 9)
+            axs[i][2].imshow(pred.squeeze(), cmap = custom_cmap, vmin = 0, vmax = 9)
 
             # Set titles
             axs[i][0].set_title("Image")
@@ -86,66 +92,27 @@ def visualize_predictions(model, image_paths, mask_paths, img_size=(512, 512)):
             axs[i][2].set_title("Prediction")
 
     plt.tight_layout()
-    plt.show()
-    
-# Visualize predictions of multiple models
-def visualize_predictions_multiple(models, model_names, image_paths, mask_paths, img_size=(512, 512)):
-    # Define image and mask transformations
-    img_transform = T.Compose([
-        T.Resize(img_size),
-        T.ToTensor(),
-        T.Normalize(mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271])
-    ])
-    mask_transform = T.Compose([
-        T.Resize(img_size),
-        T.PILToTensor()
-    ])
-
-    # Prepare subplots with extra columns for additional models
-    n = len(image_paths)
-    num_models = len(models)
-    fig, axs = plt.subplots(n, 2 + num_models, figsize=(6 * (2 + num_models), 6 * n))
-    if n == 1:
-        axs = [axs]
-
-    with torch.no_grad():
-        for i in range(n):
-            # Load and process images/masks
-            img = img_transform(Image.open(image_paths[i])).unsqueeze(0)
-            mask = mask_transform(Image.open(mask_paths[i]))
-
-            # Move image to GPU if available
-            if torch.cuda.is_available():
-                img = img.cuda()
-
-            # Unnormalize the input image for visualization
-            img_unnorm = unnormalize(img.squeeze().cpu(), mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271])
-            axs[i][0].imshow(np.transpose(img_unnorm, (1, 2, 0)))
-            axs[i][1].imshow(mask.squeeze(), cmap=custom_cmap, vmin=0, vmax=9)
-            
-            # Predict and visualize for each model
-            for j, model in enumerate(models):
-                pred = model(img)['out'] if hasattr(model, 'aux_classifier') else model(img)
-                pred = torch.squeeze(pred).argmax(dim=0).cpu().detach().numpy()
-                axs[i][2 + j].imshow(pred, cmap=custom_cmap, vmin=0, vmax=9)
-                axs[i][2 + j].set_title(model_names[j])
-
-            # Set titles for input and label
-            axs[i][0].set_title("Image")
-            axs[i][1].set_title("Label")
-
-    plt.tight_layout()
+    os.makedirs("refer_images", exist_ok=True)
+    plt.savefig(f'refer_images/test_{opt.name_net}.png')
     plt.show()
 
-# Example usage
-model_unet = load_model('unet')
-model_pspnet = load_model('pspnet')
-model_deeplab = load_model('deeplab')
+if __name__ == '__main__':
 
-models = [model_unet, model_pspnet, model_deeplab]
-model_names = ['U-Net', 'PSPNet', 'DeepLab']
+    activate_model = load_model(opt.name_net)
 
-image_paths = ['./data/val/6651.jpg', './data/val/7488.jpg', './data/val/6734.jpg']
-mask_paths = ['./data/val/6651_lab.png', './data/val/7488_lab.png', './data/val/6734_lab.png']
+    # Test images and corresponding masks
+    image_paths = [
+        '/root/autodl-tmp/test/6467.jpg',
+        '/root/autodl-tmp/test/6691.jpg',
+        '/root/autodl-tmp/test/6718.jpg',
+        '/root/autodl-tmp/test/6927.jpg'
+    ]
+    mask_paths = [
+        '/root/autodl-tmp/test/6467_lab.png',
+        '/root/autodl-tmp/test/6691_lab.png',
+        '/root/autodl-tmp/test/6718_lab.png',
+        '/root/autodl-tmp/test/6927_lab.png'
+    ]
 
-visualize_predictions_multiple(models, model_names, image_paths, mask_paths)
+    # Visualize predictions for PSPNet
+    visualize_predictions(activate_model, image_paths, mask_paths)
