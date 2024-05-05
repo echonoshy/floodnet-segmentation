@@ -8,7 +8,7 @@ from torchvision import transforms as T
 from core.model import set_model
 from core.opt import opt
 
-# Custom colormap and names for semantic classes
+# Define a custom colormap for semantic classes
 custom_colors = [
     [0, 0, 0],  # Background
     [1, 0, 0],  # Building flooded
@@ -23,13 +23,13 @@ custom_colors = [
 ]
 custom_cmap = ListedColormap(custom_colors)
 
-# Unnormalization function
+# Function to unnormalize a tensor image
 def unnormalize(tensor, mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271]):
     mean = torch.tensor(mean, device=tensor.device, dtype=tensor.dtype)
     std = torch.tensor(std, device=tensor.device, dtype=tensor.dtype)
     return tensor * std + mean
 
-# Load a specific model and weights based on the name
+# Load the model based on the specified name
 def load_model(model_name):
     opt.name_net = model_name
     model, _, _ = set_model(opt)
@@ -41,8 +41,17 @@ def load_model(model_name):
         model = model.cuda()
     return model
 
-# Visualize predictions with a single model
+# Visualize predictions made by the model
 def visualize_predictions(model, image_paths, mask_paths, opt=opt):
+    """
+    Generate and display visual predictions for a list of test images.
+
+    Parameters:
+        model (torch.nn.Module): Trained model to use for predictions.
+        image_paths (list): List of file paths for test images.
+        mask_paths (list): List of file paths for the ground truth masks.
+        opt (Namespace): Configuration options.
+    """
     # Define image and mask transformations
     img_transform = T.Compose([
         T.Resize((opt.resize_height, opt.resize_width)),
@@ -62,31 +71,29 @@ def visualize_predictions(model, image_paths, mask_paths, opt=opt):
 
     with torch.no_grad():
         for i in range(n):
-            # Load and process images/masks
+            # Load and preprocess the images and masks
             img = img_transform(Image.open(image_paths[i]))
             mask = mask_transform(Image.open(mask_paths[i]))
 
             # Move image to GPU if available
             if torch.cuda.is_available():
                 img = img.cuda(non_blocking=True)
-            
-            if opt.name_net == 'deeplab': 
-                pred = model(img[None,:,:,:])['out']
 
+            # Make predictions using the model
+            if opt.name_net == 'deeplab': 
+                pred = model(img[None, :, :, :])['out']
             else:
-                pred = model(img[None,:,:,:])
+                pred = model(img[None, :, :, :])
                 
-            pred = torch.squeeze(pred)
-            pred = pred.argmax(0).squeeze()
+            pred = torch.squeeze(pred).argmax(0).squeeze()
             pred = pred.cpu().detach().numpy()
 
+            # Unnormalize the image and display results
+            axs[i][0].imshow(np.squeeze(unnormalize(np.transpose(img.squeeze().cpu(), (1, 2, 0)))))
+            axs[i][1].imshow(mask.squeeze(), cmap=custom_cmap, vmin=0, vmax=9)
+            axs[i][2].imshow(pred.squeeze(), cmap=custom_cmap, vmin=0, vmax=9)
 
-            # Unnormalize and visualize
-            axs[i][0].imshow(np.squeeze(unnormalize(np.transpose(img.squeeze().cpu(),(1,2,0)))))
-            axs[i][1].imshow(mask.squeeze(), cmap = custom_cmap, vmin = 0, vmax = 9)
-            axs[i][2].imshow(pred.squeeze(), cmap = custom_cmap, vmin = 0, vmax = 9)
-
-            # Set titles
+            # Set subplot titles
             axs[i][0].set_title("Image")
             axs[i][1].set_title("Label")
             axs[i][2].set_title("Prediction")
@@ -96,11 +103,12 @@ def visualize_predictions(model, image_paths, mask_paths, opt=opt):
     plt.savefig(f'inference_images/test_{opt.name_net}.png')
     plt.show()
 
+# Main script execution
 if __name__ == '__main__':
-
+    # Load the specified model
     activate_model = load_model(opt.name_net)
 
-    # Test images and corresponding masks
+    # List of test images and corresponding ground truth masks
     image_paths = [
         '/root/autodl-tmp/test/6467.jpg',
         '/root/autodl-tmp/test/6691.jpg',
@@ -114,5 +122,5 @@ if __name__ == '__main__':
         '/root/autodl-tmp/test/6927_lab.png'
     ]
 
-    # Visualize predictions for PSPNet
+    # Visualize predictions
     visualize_predictions(activate_model, image_paths, mask_paths)
