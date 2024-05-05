@@ -7,6 +7,7 @@ from torch.backends import cudnn
 
 from core.dataset import FloodNetDataset
 from models.unet import UNet 
+from torchvision.models.segmentation import deeplabv3_resnet50
 import segmentation_models_pytorch as smp
 
 def set_model(opt):
