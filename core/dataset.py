@@ -59,8 +59,8 @@ class FloodNetDataset(Dataset):
         """
         img_file = os.path.join(self.base_folder, self.im_files[index])  # Path to the image file
         gt_file = img_file.replace(".jpg", "_lab.png")  # Corresponding ground truth label file path
-        img = Image.open(img_file)  # Open the image file
-        label = Image.open(gt_file)  # Open the ground truth label file
+        img = Image.open(img_file)  
+        label = Image.open(gt_file)  
 
         # Apply transformations
         state = torch.get_rng_state()  # Save the random state
