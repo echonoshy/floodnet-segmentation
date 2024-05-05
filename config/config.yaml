@@ -2,7 +2,7 @@
 
 # --------------------------------------------------------- #
 # 1. Activated Model
-activated: pspnet
+activated: unet
 
 
 # --------------------------------------------------------- #
@@ -15,7 +15,7 @@ unet:
   name_net: 'unet'  
   batch_size: 32
   num_workers: 8
-  epochs: 2
+  epochs: 15
   num_classes: 10
   resize_height: 256
   resize_width: 256
@@ -56,7 +56,7 @@ deeplab:
   std: [0.9023, 1.1647, 1.3271]
   print_freq: 20
   name_net: 'pspnet'
-  batch_size: 128
+  batch_size: 32
   num_workers: 8
   epochs: 15
   num_classes: 10
