@@ -43,7 +43,7 @@ class UpConv(nn.Module):
 
 class UNet(nn.Module):
     """
-    U-Net architecture for semantic segmentation.
+    UNet architecture for semantic segmentation.
     """
     def __init__(self, img_ch=3, output_ch=1, norm_layer=None):
         super(UNet, self).__init__()
