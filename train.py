@@ -116,7 +116,7 @@ def save_plots(train_loss_values, val_loss_values, val_dices, opt):
 
 def run():
     try:
-        train_loader, val_loader = set_loader(opt)
+        train_loader, val_loader, _ = set_loader(opt)
         model, criterion, optimizer = set_model(opt)
         save_file = os.path.join(opt.results_folder, opt.name_net + '_last.pth')
 

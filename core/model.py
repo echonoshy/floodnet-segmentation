@@ -76,15 +76,18 @@ def set_loader(opt):
     # Set paths and create dataset objects
     train_dir = os.path.join(opt.data_folder, 'train')
     val_dir = os.path.join(opt.data_folder, 'val')
+    test_dir = os.path.join(opt.data_folder, 'test')
 
     train_dataset = FloodNetDataset(train_dir, transform=train_transform, target_transform=train_target_transform)
     validation_dataset = FloodNetDataset(val_dir, transform=val_transform, target_transform=val_target_transform)
-
+    test_dataset = FloodNetDataset(test_dir, transform=val_transform, target_transform=val_target_transform)
+    
     # Data loaders for handling batch processing
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True)
     val_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=opt.batch_size, shuffle=True)
+    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=opt.batch_size, shuffle=False)
 
-    return train_loader, val_loader
+    return train_loader, val_loader, test_loader
 
 def save_model(model, optimizer, opt, epoch, save_file):
     """
