@@ -1,0 +1,10 @@
+# model weights md5
+
+738a4f25c413c503da15a4fa720923dd  pspnet_best.pth
+6aa0eb303f141709895e8f7521e7fc45  pspnet_last.pth
+
+ec135b70cb54b1c4c40bbe08ce21d467  deeplab_best.pth
+10c7ffb3b9d68f9a2565e294bd1e42b2  deeplab_last.pth
+
+ea5cb3c44949cb90b761de639d930ee7  unet_best.pth
+902315f539b26d9843960d48affb7b7b  unet_last.pth

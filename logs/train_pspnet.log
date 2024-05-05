@@ -1,0 +1,95 @@
+2024-05-05 09:52:25,839 - train_pspnet - INFO:  Start training ...
+2024-05-05 10:00:08,400 - train_pspnet - INFO:  Validation loss: 3.0182, Validation DICE coefficient: 0.0282
+2024-05-05 10:00:08,400 - train_pspnet - INFO:  Epoch 1: Total Loss: 1.1179, Validation Loss: 3.0182, Validation DICE: 0.0282
+2024-05-05 10:07:56,360 - train_pspnet - INFO:  Validation loss: 1.2213, Validation DICE coefficient: 0.3525
+2024-05-05 10:07:56,361 - train_pspnet - INFO:  Epoch 2: Total Loss: 0.7278, Validation Loss: 1.2213, Validation DICE: 0.3525
+2024-05-05 10:07:56,361 - train_pspnet - INFO:  Saving/updating current best model at epoch=2
+2024-05-05 10:15:49,225 - train_pspnet - INFO:  Validation loss: 0.8309, Validation DICE coefficient: 0.4411
+2024-05-05 10:15:49,225 - train_pspnet - INFO:  Epoch 3: Total Loss: 0.6625, Validation Loss: 0.8309, Validation DICE: 0.4411
+2024-05-05 10:15:49,225 - train_pspnet - INFO:  Saving/updating current best model at epoch=3
+2024-05-05 10:23:42,598 - train_pspnet - INFO:  Validation loss: 0.6032, Validation DICE coefficient: 0.5466
+2024-05-05 10:23:42,598 - train_pspnet - INFO:  Epoch 4: Total Loss: 0.6174, Validation Loss: 0.6032, Validation DICE: 0.5466
+2024-05-05 10:23:42,598 - train_pspnet - INFO:  Saving/updating current best model at epoch=4
+2024-05-05 10:31:25,991 - train_pspnet - INFO:  Validation loss: 0.6233, Validation DICE coefficient: 0.5465
+2024-05-05 10:31:25,992 - train_pspnet - INFO:  Epoch 5: Total Loss: 0.5785, Validation Loss: 0.6233, Validation DICE: 0.5465
+2024-05-05 10:39:03,810 - train_pspnet - INFO:  Validation loss: 0.6097, Validation DICE coefficient: 0.5634
+2024-05-05 10:39:03,811 - train_pspnet - INFO:  Epoch 6: Total Loss: 0.5455, Validation Loss: 0.6097, Validation DICE: 0.5634
+2024-05-05 10:39:03,811 - train_pspnet - INFO:  Saving/updating current best model at epoch=6
+2024-05-05 10:46:50,496 - train_pspnet - INFO:  Validation loss: 0.5647, Validation DICE coefficient: 0.5798
+2024-05-05 10:46:50,497 - train_pspnet - INFO:  Epoch 7: Total Loss: 0.5415, Validation Loss: 0.5647, Validation DICE: 0.5798
+2024-05-05 10:46:50,497 - train_pspnet - INFO:  Saving/updating current best model at epoch=7
+2024-05-05 10:54:25,844 - train_pspnet - INFO:  Validation loss: 0.5227, Validation DICE coefficient: 0.6048
+2024-05-05 10:54:25,844 - train_pspnet - INFO:  Epoch 8: Total Loss: 0.5062, Validation Loss: 0.5227, Validation DICE: 0.6048
+2024-05-05 10:54:25,844 - train_pspnet - INFO:  Saving/updating current best model at epoch=8
+2024-05-05 11:01:49,798 - train_pspnet - INFO:  Validation loss: 0.5375, Validation DICE coefficient: 0.5695
+2024-05-05 11:01:49,799 - train_pspnet - INFO:  Epoch 9: Total Loss: 0.4955, Validation Loss: 0.5375, Validation DICE: 0.5695
+2024-05-05 11:09:23,909 - train_pspnet - INFO:  Validation loss: 0.5441, Validation DICE coefficient: 0.5871
+2024-05-05 11:09:23,909 - train_pspnet - INFO:  Epoch 10: Total Loss: 0.4830, Validation Loss: 0.5441, Validation DICE: 0.5871
+2024-05-05 11:17:21,910 - train_pspnet - INFO:  Validation loss: 0.5043, Validation DICE coefficient: 0.6116
+2024-05-05 11:17:21,911 - train_pspnet - INFO:  Epoch 11: Total Loss: 0.4726, Validation Loss: 0.5043, Validation DICE: 0.6116
+2024-05-05 11:17:21,911 - train_pspnet - INFO:  Saving/updating current best model at epoch=11
+2024-05-05 11:25:19,435 - train_pspnet - INFO:  Validation loss: 0.5458, Validation DICE coefficient: 0.5938
+2024-05-05 11:25:19,435 - train_pspnet - INFO:  Epoch 12: Total Loss: 0.4638, Validation Loss: 0.5458, Validation DICE: 0.5938
+2024-05-05 11:33:16,437 - train_pspnet - INFO:  Validation loss: 0.5281, Validation DICE coefficient: 0.5911
+2024-05-05 11:33:16,437 - train_pspnet - INFO:  Epoch 13: Total Loss: 0.4551, Validation Loss: 0.5281, Validation DICE: 0.5911
+2024-05-05 11:41:10,677 - train_pspnet - INFO:  Validation loss: 0.5280, Validation DICE coefficient: 0.6133
+2024-05-05 11:41:10,677 - train_pspnet - INFO:  Epoch 14: Total Loss: 0.4493, Validation Loss: 0.5280, Validation DICE: 0.6133
+2024-05-05 11:41:10,678 - train_pspnet - INFO:  Saving/updating current best model at epoch=14
+2024-05-05 11:49:05,917 - train_pspnet - INFO:  Validation loss: 0.5062, Validation DICE coefficient: 0.6068
+2024-05-05 11:49:05,918 - train_pspnet - INFO:  Epoch 15: Total Loss: 0.4489, Validation Loss: 0.5062, Validation DICE: 0.6068
+2024-05-05 11:57:01,529 - train_pspnet - INFO:  Validation loss: 0.4766, Validation DICE coefficient: 0.6118
+2024-05-05 11:57:01,529 - train_pspnet - INFO:  Epoch 16: Total Loss: 0.4339, Validation Loss: 0.4766, Validation DICE: 0.6118
+2024-05-05 12:05:03,098 - train_pspnet - INFO:  Validation loss: 0.5281, Validation DICE coefficient: 0.6043
+2024-05-05 12:05:03,098 - train_pspnet - INFO:  Epoch 17: Total Loss: 0.4197, Validation Loss: 0.5281, Validation DICE: 0.6043
+2024-05-05 12:13:02,725 - train_pspnet - INFO:  Validation loss: 0.5525, Validation DICE coefficient: 0.6136
+2024-05-05 12:13:02,726 - train_pspnet - INFO:  Epoch 18: Total Loss: 0.4208, Validation Loss: 0.5525, Validation DICE: 0.6136
+2024-05-05 12:13:02,733 - train_pspnet - INFO:  Saving/updating current best model at epoch=18
+2024-05-05 12:20:51,126 - train_pspnet - INFO:  Validation loss: 0.5360, Validation DICE coefficient: 0.6040
+2024-05-05 12:20:51,126 - train_pspnet - INFO:  Epoch 19: Total Loss: 0.4221, Validation Loss: 0.5360, Validation DICE: 0.6040
+2024-05-05 12:28:37,592 - train_pspnet - INFO:  Validation loss: 0.4962, Validation DICE coefficient: 0.6217
+2024-05-05 12:28:37,592 - train_pspnet - INFO:  Epoch 20: Total Loss: 0.4110, Validation Loss: 0.4962, Validation DICE: 0.6217
+2024-05-05 12:28:37,592 - train_pspnet - INFO:  Saving/updating current best model at epoch=20
+2024-05-05 12:36:21,257 - train_pspnet - INFO:  Validation loss: 0.4908, Validation DICE coefficient: 0.6226
+2024-05-05 12:36:21,258 - train_pspnet - INFO:  Epoch 21: Total Loss: 0.4095, Validation Loss: 0.4908, Validation DICE: 0.6226
+2024-05-05 12:36:21,258 - train_pspnet - INFO:  Saving/updating current best model at epoch=21
+2024-05-05 12:44:10,914 - train_pspnet - INFO:  Validation loss: 0.6168, Validation DICE coefficient: 0.5956
+2024-05-05 12:44:10,914 - train_pspnet - INFO:  Epoch 22: Total Loss: 0.3999, Validation Loss: 0.6168, Validation DICE: 0.5956
+2024-05-05 12:51:48,989 - train_pspnet - INFO:  Validation loss: 0.5767, Validation DICE coefficient: 0.6050
+2024-05-05 12:51:48,990 - train_pspnet - INFO:  Epoch 23: Total Loss: 0.4156, Validation Loss: 0.5767, Validation DICE: 0.6050
+2024-05-05 12:59:43,031 - train_pspnet - INFO:  Validation loss: 0.5215, Validation DICE coefficient: 0.6105
+2024-05-05 12:59:43,031 - train_pspnet - INFO:  Epoch 24: Total Loss: 0.4153, Validation Loss: 0.5215, Validation DICE: 0.6105
+2024-05-05 13:07:35,750 - train_pspnet - INFO:  Validation loss: 0.5344, Validation DICE coefficient: 0.6007
+2024-05-05 13:07:35,750 - train_pspnet - INFO:  Epoch 25: Total Loss: 0.4207, Validation Loss: 0.5344, Validation DICE: 0.6007
+2024-05-05 13:15:30,793 - train_pspnet - INFO:  Validation loss: 0.4977, Validation DICE coefficient: 0.6043
+2024-05-05 13:15:30,794 - train_pspnet - INFO:  Epoch 26: Total Loss: 0.4280, Validation Loss: 0.4977, Validation DICE: 0.6043
+2024-05-05 13:23:07,249 - train_pspnet - INFO:  Validation loss: 0.4814, Validation DICE coefficient: 0.6230
+2024-05-05 13:23:07,250 - train_pspnet - INFO:  Epoch 27: Total Loss: 0.3956, Validation Loss: 0.4814, Validation DICE: 0.6230
+2024-05-05 13:23:07,250 - train_pspnet - INFO:  Saving/updating current best model at epoch=27
+2024-05-05 13:30:55,404 - train_pspnet - INFO:  Validation loss: 0.5243, Validation DICE coefficient: 0.6184
+2024-05-05 13:30:55,404 - train_pspnet - INFO:  Epoch 28: Total Loss: 0.3967, Validation Loss: 0.5243, Validation DICE: 0.6184
+2024-05-05 13:38:52,462 - train_pspnet - INFO:  Validation loss: 0.5684, Validation DICE coefficient: 0.6159
+2024-05-05 13:38:52,463 - train_pspnet - INFO:  Epoch 29: Total Loss: 0.3973, Validation Loss: 0.5684, Validation DICE: 0.6159
+2024-05-05 13:46:46,108 - train_pspnet - INFO:  Validation loss: 0.4823, Validation DICE coefficient: 0.6240
+2024-05-05 13:46:46,108 - train_pspnet - INFO:  Epoch 30: Total Loss: 0.3916, Validation Loss: 0.4823, Validation DICE: 0.6240
+2024-05-05 13:46:46,109 - train_pspnet - INFO:  Saving/updating current best model at epoch=30
+2024-05-05 13:54:35,430 - train_pspnet - INFO:  Validation loss: 0.4601, Validation DICE coefficient: 0.6387
+2024-05-05 13:54:35,430 - train_pspnet - INFO:  Epoch 31: Total Loss: 0.3765, Validation Loss: 0.4601, Validation DICE: 0.6387
+2024-05-05 13:54:35,431 - train_pspnet - INFO:  Saving/updating current best model at epoch=31
+2024-05-05 14:02:23,624 - train_pspnet - INFO:  Validation loss: 0.4711, Validation DICE coefficient: 0.6256
+2024-05-05 14:02:23,624 - train_pspnet - INFO:  Epoch 32: Total Loss: 0.3691, Validation Loss: 0.4711, Validation DICE: 0.6256
+2024-05-05 14:10:03,514 - train_pspnet - INFO:  Validation loss: 0.5255, Validation DICE coefficient: 0.6172
+2024-05-05 14:10:03,514 - train_pspnet - INFO:  Epoch 33: Total Loss: 0.3683, Validation Loss: 0.5255, Validation DICE: 0.6172
+2024-05-05 14:17:43,274 - train_pspnet - INFO:  Validation loss: 0.5060, Validation DICE coefficient: 0.6288
+2024-05-05 14:17:43,274 - train_pspnet - INFO:  Epoch 34: Total Loss: 0.3743, Validation Loss: 0.5060, Validation DICE: 0.6288
+2024-05-05 14:25:17,366 - train_pspnet - INFO:  Validation loss: 0.4955, Validation DICE coefficient: 0.6372
+2024-05-05 14:25:17,367 - train_pspnet - INFO:  Epoch 35: Total Loss: 0.3644, Validation Loss: 0.4955, Validation DICE: 0.6372
+2024-05-05 14:32:54,997 - train_pspnet - INFO:  Validation loss: 0.4769, Validation DICE coefficient: 0.6353
+2024-05-05 14:32:54,997 - train_pspnet - INFO:  Epoch 36: Total Loss: 0.3576, Validation Loss: 0.4769, Validation DICE: 0.6353
+2024-05-05 14:40:32,421 - train_pspnet - INFO:  Validation loss: 0.5510, Validation DICE coefficient: 0.6178
+2024-05-05 14:40:32,422 - train_pspnet - INFO:  Epoch 37: Total Loss: 0.3528, Validation Loss: 0.5510, Validation DICE: 0.6178
+2024-05-05 14:48:12,835 - train_pspnet - INFO:  Validation loss: 0.4768, Validation DICE coefficient: 0.6244
+2024-05-05 14:48:12,836 - train_pspnet - INFO:  Epoch 38: Total Loss: 0.3583, Validation Loss: 0.4768, Validation DICE: 0.6244
+2024-05-05 14:55:52,016 - train_pspnet - INFO:  Validation loss: 0.4891, Validation DICE coefficient: 0.6212
+2024-05-05 14:55:52,016 - train_pspnet - INFO:  Epoch 39: Total Loss: 0.3538, Validation Loss: 0.4891, Validation DICE: 0.6212
+2024-05-05 15:03:38,201 - train_pspnet - INFO:  Validation loss: 0.5908, Validation DICE coefficient: 0.6007
+2024-05-05 15:03:38,201 - train_pspnet - INFO:  Epoch 40: Total Loss: 0.3423, Validation Loss: 0.5908, Validation DICE: 0.6007

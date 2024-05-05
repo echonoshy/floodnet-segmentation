@@ -1,0 +1,66 @@
+2024-05-05 18:21:22,982 - train_unet - INFO:  Start training ...
+2024-05-05 18:24:22,610 - train_unet - INFO:  Fully_supervised-Train Epoch: [1/15], lr: 0.001000, Loss: 1.5688
+2024-05-05 18:27:17,135 - train_unet - INFO:  Fully_supervised-Train Epoch: [1/15], lr: 0.001000, Loss: 1.3338
+2024-05-05 18:29:54,150 - train_unet - INFO:  Validation loss: 1.3580, Validation DICE coefficient: 0.1631
+2024-05-05 18:29:54,151 - train_unet - INFO:  Epoch 1: Total Loss: 1.3014, Validation Loss: 1.3580, Validation DICE: 0.1631
+2024-05-05 18:32:55,854 - train_unet - INFO:  Fully_supervised-Train Epoch: [2/15], lr: 0.001000, Loss: 0.9734
+2024-05-05 18:35:57,267 - train_unet - INFO:  Fully_supervised-Train Epoch: [2/15], lr: 0.001000, Loss: 0.9214
+2024-05-05 18:38:36,659 - train_unet - INFO:  Validation loss: 0.9130, Validation DICE coefficient: 0.3376
+2024-05-05 18:38:36,659 - train_unet - INFO:  Epoch 2: Total Loss: 0.9258, Validation Loss: 0.9130, Validation DICE: 0.3376
+2024-05-05 18:38:36,660 - train_unet - INFO:  Saving/updating current best model at epoch=2
+2024-05-05 18:41:36,571 - train_unet - INFO:  Fully_supervised-Train Epoch: [3/15], lr: 0.001000, Loss: 0.8568
+2024-05-05 18:44:36,830 - train_unet - INFO:  Fully_supervised-Train Epoch: [3/15], lr: 0.001000, Loss: 0.8449
+2024-05-05 18:47:16,922 - train_unet - INFO:  Validation loss: 0.8796, Validation DICE coefficient: 0.3397
+2024-05-05 18:47:16,922 - train_unet - INFO:  Epoch 3: Total Loss: 0.8410, Validation Loss: 0.8796, Validation DICE: 0.3397
+2024-05-05 18:47:16,923 - train_unet - INFO:  Saving/updating current best model at epoch=3
+2024-05-05 18:50:16,926 - train_unet - INFO:  Fully_supervised-Train Epoch: [4/15], lr: 0.001000, Loss: 0.8097
+2024-05-05 18:53:13,550 - train_unet - INFO:  Fully_supervised-Train Epoch: [4/15], lr: 0.001000, Loss: 0.8018
+2024-05-05 18:55:50,285 - train_unet - INFO:  Validation loss: 0.7977, Validation DICE coefficient: 0.4626
+2024-05-05 18:55:50,285 - train_unet - INFO:  Epoch 4: Total Loss: 0.7893, Validation Loss: 0.7977, Validation DICE: 0.4626
+2024-05-05 18:55:50,286 - train_unet - INFO:  Saving/updating current best model at epoch=4
+2024-05-05 18:58:49,451 - train_unet - INFO:  Fully_supervised-Train Epoch: [5/15], lr: 0.001000, Loss: 0.7776
+2024-05-05 19:01:44,991 - train_unet - INFO:  Fully_supervised-Train Epoch: [5/15], lr: 0.001000, Loss: 0.7601
+2024-05-05 19:04:21,620 - train_unet - INFO:  Validation loss: 0.8309, Validation DICE coefficient: 0.4105
+2024-05-05 19:04:21,620 - train_unet - INFO:  Epoch 5: Total Loss: 0.7611, Validation Loss: 0.8309, Validation DICE: 0.4105
+2024-05-05 19:07:17,164 - train_unet - INFO:  Fully_supervised-Train Epoch: [6/15], lr: 0.001000, Loss: 0.7265
+2024-05-05 19:10:10,753 - train_unet - INFO:  Fully_supervised-Train Epoch: [6/15], lr: 0.001000, Loss: 0.7552
+2024-05-05 19:12:45,081 - train_unet - INFO:  Validation loss: 0.7584, Validation DICE coefficient: 0.4398
+2024-05-05 19:12:45,081 - train_unet - INFO:  Epoch 6: Total Loss: 0.7563, Validation Loss: 0.7584, Validation DICE: 0.4398
+2024-05-05 19:15:40,012 - train_unet - INFO:  Fully_supervised-Train Epoch: [7/15], lr: 0.001000, Loss: 0.7322
+2024-05-05 19:18:36,157 - train_unet - INFO:  Fully_supervised-Train Epoch: [7/15], lr: 0.001000, Loss: 0.7222
+2024-05-05 19:21:16,475 - train_unet - INFO:  Validation loss: 0.6693, Validation DICE coefficient: 0.5238
+2024-05-05 19:21:16,475 - train_unet - INFO:  Epoch 7: Total Loss: 0.7193, Validation Loss: 0.6693, Validation DICE: 0.5238
+2024-05-05 19:21:16,476 - train_unet - INFO:  Saving/updating current best model at epoch=7
+2024-05-05 19:24:11,557 - train_unet - INFO:  Fully_supervised-Train Epoch: [8/15], lr: 0.001000, Loss: 0.7127
+2024-05-05 19:27:08,824 - train_unet - INFO:  Fully_supervised-Train Epoch: [8/15], lr: 0.001000, Loss: 0.7055
+2024-05-05 19:29:38,463 - train_unet - INFO:  Validation loss: 0.6840, Validation DICE coefficient: 0.5131
+2024-05-05 19:29:38,464 - train_unet - INFO:  Epoch 8: Total Loss: 0.7004, Validation Loss: 0.6840, Validation DICE: 0.5131
+2024-05-05 19:32:33,158 - train_unet - INFO:  Fully_supervised-Train Epoch: [9/15], lr: 0.001000, Loss: 0.6761
+2024-05-05 19:35:30,722 - train_unet - INFO:  Fully_supervised-Train Epoch: [9/15], lr: 0.001000, Loss: 0.6772
+2024-05-05 19:38:03,972 - train_unet - INFO:  Validation loss: 0.7002, Validation DICE coefficient: 0.4997
+2024-05-05 19:38:03,972 - train_unet - INFO:  Epoch 9: Total Loss: 0.6812, Validation Loss: 0.7002, Validation DICE: 0.4997
+2024-05-05 19:40:59,702 - train_unet - INFO:  Fully_supervised-Train Epoch: [10/15], lr: 0.001000, Loss: 0.6984
+2024-05-05 19:43:52,007 - train_unet - INFO:  Fully_supervised-Train Epoch: [10/15], lr: 0.001000, Loss: 0.6883
+2024-05-05 19:46:21,370 - train_unet - INFO:  Validation loss: 0.7020, Validation DICE coefficient: 0.4869
+2024-05-05 19:46:21,370 - train_unet - INFO:  Epoch 10: Total Loss: 0.6904, Validation Loss: 0.7020, Validation DICE: 0.4869
+2024-05-05 19:49:12,029 - train_unet - INFO:  Fully_supervised-Train Epoch: [11/15], lr: 0.001000, Loss: 0.6925
+2024-05-05 19:52:06,587 - train_unet - INFO:  Fully_supervised-Train Epoch: [11/15], lr: 0.001000, Loss: 0.6814
+2024-05-05 19:54:39,550 - train_unet - INFO:  Validation loss: 0.6690, Validation DICE coefficient: 0.5055
+2024-05-05 19:54:39,550 - train_unet - INFO:  Epoch 11: Total Loss: 0.6812, Validation Loss: 0.6690, Validation DICE: 0.5055
+2024-05-05 19:57:27,732 - train_unet - INFO:  Fully_supervised-Train Epoch: [12/15], lr: 0.001000, Loss: 0.6766
+2024-05-05 20:00:12,165 - train_unet - INFO:  Fully_supervised-Train Epoch: [12/15], lr: 0.001000, Loss: 0.6688
+2024-05-05 20:02:42,083 - train_unet - INFO:  Validation loss: 0.8728, Validation DICE coefficient: 0.4373
+2024-05-05 20:02:42,083 - train_unet - INFO:  Epoch 12: Total Loss: 0.6671, Validation Loss: 0.8728, Validation DICE: 0.4373
+2024-05-05 20:05:32,481 - train_unet - INFO:  Fully_supervised-Train Epoch: [13/15], lr: 0.001000, Loss: 0.6991
+2024-05-05 20:08:23,307 - train_unet - INFO:  Fully_supervised-Train Epoch: [13/15], lr: 0.001000, Loss: 0.6868
+2024-05-05 20:10:56,413 - train_unet - INFO:  Validation loss: 0.7169, Validation DICE coefficient: 0.4855
+2024-05-05 20:10:56,413 - train_unet - INFO:  Epoch 13: Total Loss: 0.6779, Validation Loss: 0.7169, Validation DICE: 0.4855
+2024-05-05 20:13:53,564 - train_unet - INFO:  Fully_supervised-Train Epoch: [14/15], lr: 0.001000, Loss: 0.7055
+2024-05-05 20:16:47,292 - train_unet - INFO:  Fully_supervised-Train Epoch: [14/15], lr: 0.001000, Loss: 0.6738
+2024-05-05 20:19:22,180 - train_unet - INFO:  Validation loss: 0.6633, Validation DICE coefficient: 0.5354
+2024-05-05 20:19:22,181 - train_unet - INFO:  Epoch 14: Total Loss: 0.6689, Validation Loss: 0.6633, Validation DICE: 0.5354
+2024-05-05 20:19:22,181 - train_unet - INFO:  Saving/updating current best model at epoch=14
+2024-05-05 20:22:11,743 - train_unet - INFO:  Fully_supervised-Train Epoch: [15/15], lr: 0.001000, Loss: 0.6510
+2024-05-05 20:24:55,301 - train_unet - INFO:  Fully_supervised-Train Epoch: [15/15], lr: 0.001000, Loss: 0.6407
+2024-05-05 20:27:23,378 - train_unet - INFO:  Validation loss: 0.6425, Validation DICE coefficient: 0.5201
+2024-05-05 20:27:23,378 - train_unet - INFO:  Epoch 15: Total Loss: 0.6359, Validation Loss: 0.6425, Validation DICE: 0.5201

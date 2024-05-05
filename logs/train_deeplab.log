@@ -1,0 +1,71 @@
+2024-05-05 15:30:58,626 - train_deeplab - INFO:  Start training ...
+2024-05-05 15:31:35,591 - train_deeplab - ERROR:  Error during training: CUDA out of memory. Tried to allocate 1024.00 MiB. GPU 0 has a total capacty of 23.64 GiB of which 395.69 MiB is free. Process 771112 has 23.25 GiB memory in use. Of the allocated memory 22.75 GiB is allocated by PyTorch, and 48.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+2024-05-05 15:31:35,591 - train_deeplab - ERROR:  Unhandled error in run function: CUDA out of memory. Tried to allocate 1024.00 MiB. GPU 0 has a total capacty of 23.64 GiB of which 395.69 MiB is free. Process 771112 has 23.25 GiB memory in use. Of the allocated memory 22.75 GiB is allocated by PyTorch, and 48.15 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+2024-05-05 15:32:36,381 - train_deeplab - INFO:  Start training ...
+2024-05-05 15:35:31,366 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [1/15], lr: 0.001000, Loss: 1.1801
+2024-05-05 15:38:20,155 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [1/15], lr: 0.001000, Loss: 0.9820
+2024-05-05 15:40:57,246 - train_deeplab - INFO:  Validation loss: 0.9285, Validation DICE coefficient: 0.3556
+2024-05-05 15:40:57,246 - train_deeplab - INFO:  Epoch 1: Total Loss: 0.9540, Validation Loss: 0.9285, Validation DICE: 0.3556
+2024-05-05 15:40:57,247 - train_deeplab - INFO:  Saving/updating current best model at epoch=1
+2024-05-05 15:43:46,316 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [2/15], lr: 0.001000, Loss: 0.6968
+2024-05-05 15:46:30,468 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [2/15], lr: 0.001000, Loss: 0.6747
+2024-05-05 15:48:52,845 - train_deeplab - INFO:  Validation loss: 0.6127, Validation DICE coefficient: 0.5443
+2024-05-05 15:48:52,846 - train_deeplab - INFO:  Epoch 2: Total Loss: 0.6820, Validation Loss: 0.6127, Validation DICE: 0.5443
+2024-05-05 15:48:52,846 - train_deeplab - INFO:  Saving/updating current best model at epoch=2
+2024-05-05 15:51:29,890 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [3/15], lr: 0.001000, Loss: 0.5867
+2024-05-05 15:54:09,729 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [3/15], lr: 0.001000, Loss: 0.5707
+2024-05-05 15:56:36,441 - train_deeplab - INFO:  Validation loss: 0.5855, Validation DICE coefficient: 0.5508
+2024-05-05 15:56:36,441 - train_deeplab - INFO:  Epoch 3: Total Loss: 0.5763, Validation Loss: 0.5855, Validation DICE: 0.5508
+2024-05-05 15:56:36,441 - train_deeplab - INFO:  Saving/updating current best model at epoch=3
+2024-05-05 15:59:23,038 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [4/15], lr: 0.001000, Loss: 0.5765
+2024-05-05 16:02:12,801 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [4/15], lr: 0.001000, Loss: 0.5833
+2024-05-05 16:04:42,892 - train_deeplab - INFO:  Validation loss: 0.6206, Validation DICE coefficient: 0.5468
+2024-05-05 16:04:42,892 - train_deeplab - INFO:  Epoch 4: Total Loss: 0.5891, Validation Loss: 0.6206, Validation DICE: 0.5468
+2024-05-05 16:07:29,628 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [5/15], lr: 0.001000, Loss: 0.5811
+2024-05-05 16:10:18,753 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [5/15], lr: 0.001000, Loss: 0.5591
+2024-05-05 16:12:43,577 - train_deeplab - INFO:  Validation loss: 0.5440, Validation DICE coefficient: 0.5354
+2024-05-05 16:12:43,577 - train_deeplab - INFO:  Epoch 5: Total Loss: 0.5533, Validation Loss: 0.5440, Validation DICE: 0.5354
+2024-05-05 16:15:32,214 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [6/15], lr: 0.001000, Loss: 0.5003
+2024-05-05 16:18:14,126 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [6/15], lr: 0.001000, Loss: 0.5065
+2024-05-05 16:20:40,207 - train_deeplab - INFO:  Validation loss: 0.6035, Validation DICE coefficient: 0.5338
+2024-05-05 16:20:40,207 - train_deeplab - INFO:  Epoch 6: Total Loss: 0.5039, Validation Loss: 0.6035, Validation DICE: 0.5338
+2024-05-05 16:23:26,707 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [7/15], lr: 0.001000, Loss: 0.4888
+2024-05-05 16:26:10,524 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [7/15], lr: 0.001000, Loss: 0.5000
+2024-05-05 16:28:38,410 - train_deeplab - INFO:  Validation loss: 0.5389, Validation DICE coefficient: 0.5326
+2024-05-05 16:28:38,411 - train_deeplab - INFO:  Epoch 7: Total Loss: 0.4996, Validation Loss: 0.5389, Validation DICE: 0.5326
+2024-05-05 16:31:27,342 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [8/15], lr: 0.001000, Loss: 0.5169
+2024-05-05 16:34:17,655 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [8/15], lr: 0.001000, Loss: 0.5102
+2024-05-05 16:36:47,330 - train_deeplab - INFO:  Validation loss: 0.5426, Validation DICE coefficient: 0.5841
+2024-05-05 16:36:47,330 - train_deeplab - INFO:  Epoch 8: Total Loss: 0.5092, Validation Loss: 0.5426, Validation DICE: 0.5841
+2024-05-05 16:36:47,331 - train_deeplab - INFO:  Saving/updating current best model at epoch=8
+2024-05-05 16:39:37,111 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [9/15], lr: 0.001000, Loss: 0.5371
+2024-05-05 16:42:27,427 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [9/15], lr: 0.001000, Loss: 0.5281
+2024-05-05 16:45:00,081 - train_deeplab - INFO:  Validation loss: 0.5384, Validation DICE coefficient: 0.5986
+2024-05-05 16:45:00,081 - train_deeplab - INFO:  Epoch 9: Total Loss: 0.5280, Validation Loss: 0.5384, Validation DICE: 0.5986
+2024-05-05 16:45:00,082 - train_deeplab - INFO:  Saving/updating current best model at epoch=9
+2024-05-05 16:47:54,782 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [10/15], lr: 0.001000, Loss: 0.4728
+2024-05-05 16:50:43,575 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [10/15], lr: 0.001000, Loss: 0.4610
+2024-05-05 16:53:10,173 - train_deeplab - INFO:  Validation loss: 0.8738, Validation DICE coefficient: 0.4451
+2024-05-05 16:53:10,173 - train_deeplab - INFO:  Epoch 10: Total Loss: 0.4562, Validation Loss: 0.8738, Validation DICE: 0.4451
+2024-05-05 16:55:59,824 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [11/15], lr: 0.001000, Loss: 0.4969
+2024-05-05 16:58:45,827 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [11/15], lr: 0.001000, Loss: 0.4853
+2024-05-05 17:01:15,890 - train_deeplab - INFO:  Validation loss: 0.4932, Validation DICE coefficient: 0.5983
+2024-05-05 17:01:15,890 - train_deeplab - INFO:  Epoch 11: Total Loss: 0.4850, Validation Loss: 0.4932, Validation DICE: 0.5983
+2024-05-05 17:04:10,021 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [12/15], lr: 0.001000, Loss: 0.4831
+2024-05-05 17:07:02,326 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [12/15], lr: 0.001000, Loss: 0.4763
+2024-05-05 17:09:33,417 - train_deeplab - INFO:  Validation loss: 0.4990, Validation DICE coefficient: 0.6191
+2024-05-05 17:09:33,418 - train_deeplab - INFO:  Epoch 12: Total Loss: 0.4792, Validation Loss: 0.4990, Validation DICE: 0.6191
+2024-05-05 17:09:33,418 - train_deeplab - INFO:  Saving/updating current best model at epoch=12
+2024-05-05 17:12:23,384 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [13/15], lr: 0.001000, Loss: 0.5107
+2024-05-05 17:15:09,560 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [13/15], lr: 0.001000, Loss: 0.4738
+2024-05-05 17:17:38,778 - train_deeplab - INFO:  Validation loss: 0.6248, Validation DICE coefficient: 0.5288
+2024-05-05 17:17:38,778 - train_deeplab - INFO:  Epoch 13: Total Loss: 0.4671, Validation Loss: 0.6248, Validation DICE: 0.5288
+2024-05-05 17:20:25,198 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [14/15], lr: 0.001000, Loss: 0.4722
+2024-05-05 17:23:07,622 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [14/15], lr: 0.001000, Loss: 0.4755
+2024-05-05 17:25:29,491 - train_deeplab - INFO:  Validation loss: 0.4872, Validation DICE coefficient: 0.6036
+2024-05-05 17:25:29,491 - train_deeplab - INFO:  Epoch 14: Total Loss: 0.4759, Validation Loss: 0.4872, Validation DICE: 0.6036
+2024-05-05 17:28:12,070 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [15/15], lr: 0.001000, Loss: 0.4180
+2024-05-05 17:30:55,853 - train_deeplab - INFO:  Fully_supervised-Train Epoch: [15/15], lr: 0.001000, Loss: 0.4391
+2024-05-05 17:33:26,553 - train_deeplab - INFO:  Validation loss: 0.5364, Validation DICE coefficient: 0.6258
+2024-05-05 17:33:26,553 - train_deeplab - INFO:  Epoch 15: Total Loss: 0.4350, Validation Loss: 0.5364, Validation DICE: 0.6258
+2024-05-05 17:33:26,554 - train_deeplab - INFO:  Saving/updating current best model at epoch=15
