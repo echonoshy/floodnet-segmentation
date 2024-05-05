@@ -2,7 +2,7 @@
 
 # --------------------------------------------------------- #
 # 1. Activated Model
-activated: unet
+activated: pspnet
 
 
 # --------------------------------------------------------- #
@@ -27,7 +27,7 @@ unet:
   project_folder: './'
   data_folder: '/root/autodl-tmp'
   # data_folder: './data'
-  results_folder: './exp/model_unet'
+  results_folder: 'exp/model_unet'
 
 pspnet:
   learning_rate: 0.001
@@ -48,7 +48,7 @@ pspnet:
   path_to_pretrained_model: ''
   project_folder: './'
   data_folder: '/root/autodl-tmp'
-  results_folder: './exp/model_pspnet'
+  results_folder: 'exp/model_pspnet'
 
 deeplab:
   learning_rate: 0.001
@@ -69,4 +69,4 @@ deeplab:
   path_to_pretrained_model: ''
   project_folder: './'
   data_folder: '/root/autodl-tmp'
-  results_folder: './exp/model_deeplab'
+  results_folder: 'exp/model_deeplab'
