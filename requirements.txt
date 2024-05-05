@@ -1,4 +1,4 @@
-opencv-python
-torch
-tqdm
-torchvision
+efficientnet-pytorch==0.7.1
+segmentation-models-pytorch==0.3.3
+torch==2.1.2+cu121
+torchvision=0.16.2+cu121

@@ -9,16 +9,16 @@
 FloodNet使用无人机拍摄的灾害过后被洪水淹没的航拍影像数据集
 
 Features: 
-	1. Dataset is distributed same as FloodNet challenge.
-	2. Masks are same size as original images.
-	3. Total class: 10 ('Background':0, 'Building-flooded':1, 'Building-non-flooded':2, 'Road-flooded':3, 'Road-non-flooded':4, 'Water':5, 'Tree':6, 'Vehicle':7, 'Pool':8, 'Grass':9).
-	4. Total image: 2343 (Train: 1445, Val: 450, Test: 448)
+  1. Dataset is distributed same as FloodNet challenge.  
+  2. Masks are same size as original images.     
+  3. Total class: 10 ('Background':0, 'Building-flooded':1, 'Building-non-flooded':2, 'Road-flooded':3, 'Road-non-flooded':4, 'Water':5, 'Tree':6, 'Vehicle':7, 'Pool':8, 'Grass':9).  
+  4. Total image: 2343 (Train: 1445, Val: 450, Test: 448)
 
 
 ### 实验环境
 - MacOS 14.4
 
-- Linux (GPU)
+- Linux 
     - PyTorch:  2.1.0
     - Python:  3.10(ubuntu22.04)
     - Cuda:  12.1
@@ -27,27 +27,33 @@ Features:
 
 
 ### 主要文件结构及作用
-- config/: 配置文件，模型相关的配置参数和指定当前需要训练的模型
-- core/ : 模型训练相关主要代码
-- exp/ 模型训练数据生成文件
-- logs/ 模型训练日志
+- config: 配置文件，模型相关的配置参数和指定当前需要训练的模型
+- core: 模型训练相关主要代码
+- exp: 模型训练数据生成文件
+- logs: 模型训练日志
 - models: 自定义模型结构
 - utils: 辅助工具，如数据集验证工具，与主程序无关
-- train.py 训练脚本入口
-- test.py 模型效果验证
-- visualize.py 模型效果可视化
+- train.py:  训练脚本入口
+- test.py:  模型效果验证
+- visualize.py: 模型效果可视化
 
 
 ### 快速上手
-1. 修改config中数据集路径，batch size等配置， 设置activate_model
+1. 修改config中数据集路径，根据机器配置设置batch size等配置，设置activated_model
 2. python train.py 
 3. python test.py
 4. python visualize.py
 
+### 模型权重下载
+https://github.com/echonoshy/floodnet-segmentation/releases/tag/v0.1.0
 
 
+## 整体实验思路
+1. 构建一套用于多分类语义分割任务的微型框架，尽量将各功能组件解耦，支持通过配置文件定义模型及训练参数。  
+2. 在模型选择上，选择了最经典的UNet模型（自定义模型）及论文中提到的效果比较好的PSPNet，DeepLab V3（第三方接口）作为实验模型。  
+3. 作为最重要的数据模块，采用了一些数据增强功能。使用Dice系数来作为模型的评价指标，由于机器限4制，训练过程中将只保留最近一次训练权重和全局最优(验证数据集中dice最小)权重。
+4. 支持模型结果可视化
 
-## 实验思路
 
 ### 使用的模型
 - **U-Net**：一种专门为生物医学图像分割设计的卷积神经网络，也适用于通用的图像分割任务。
@@ -55,8 +61,10 @@ Features:
 - **DeepLab**：一个先进的网络，利用空洞卷积和空间金字塔池化来获取多尺度上下文。
 
 ### 预处理和训练
-- **图像调整**：所有图像和标签都调整为 512x512 像素，以匹配模型的输入尺寸。
-- **归一化**：使用数据集特定的均值和标准差对图像进行归一化，以保持与训练数据分布的一致性。
+- **数据清洗**：由于数据集是干净的打标数据，且没有破损文件，这里用脚本检测过以后，没有进行更复杂处理。
+- **图像调整**：所有图像和标签都调整为 256x256 像素，以匹配模型的输入尺寸。
+- **归一化**：使用数据集特定的均值和标准差对图像进行归一化，保持数据集中在像素值相似的范围内缩放，帮助模型训练。
+- **图像增强**： 对图像进行水平、竖直翻转。（TODO:使用albumentations库进行旋转、缩放平移（差值）等更复杂的增强方案。）
 
 ### 评估
 - **指标**：
@@ -89,7 +97,10 @@ Features:
   - 并排对比每个模型的预测结果，有助于清晰比较它们的分割质量。
   - 一些类别如“水”和“道路”容易区分，但“草地”和“树木”相对较难。
 
-### 对未来工作的建议
+### 对项目的一些思考
+
+1. 数据增强
+依据我在其他
 
 - **数据增强**：应用更多的数据增强技术，有助于提高对样本较少类别的预测鲁棒性。
 - **模型集成**：结合多个模型的预测结果，利用各自的优势可以生成更准确的结果。

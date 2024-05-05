@@ -4,5 +4,5 @@
 *DS_Store
 /data 
 **/__pycache__
-/exp
-/logs
+**/*.pth
+**/nohup.out
