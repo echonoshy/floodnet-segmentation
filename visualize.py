@@ -92,8 +92,8 @@ def visualize_predictions(model, image_paths, mask_paths, opt=opt):
             axs[i][2].set_title("Prediction")
 
     plt.tight_layout()
-    os.makedirs("refer_images", exist_ok=True)
-    plt.savefig(f'refer_images/test_{opt.name_net}.png')
+    os.makedirs("inference_images", exist_ok=True)
+    plt.savefig(f'inference_images/test_{opt.name_net}.png')
     plt.show()
 
 if __name__ == '__main__':
