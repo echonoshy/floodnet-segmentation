@@ -16,7 +16,7 @@ from core.opt import opt
 from core.logger import setup_logging
 
 # 设置日志
-logger = setup_logging()
+logger = setup_logging(logger_name=f'train_{opt.name_net}')
 
 def train(model, train_loader, val_loader, criterion, optimizer, epoch, opt):
     model.train()
