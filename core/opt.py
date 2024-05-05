@@ -2,17 +2,18 @@ import os
 import yaml
 
 class Opt:
-    def __init__(self, config_path='config/config.yaml', model_name='unet'):
+    def __init__(self, config_path='config/config.yaml'):
         # Load configuration from YAML file specific to the model name provided
         config = self.read_config(config_path)
-        model_config = config[model_name]
+        activated_model = config['activated']
+        model_config = config[activated_model]
 
         # Assign model-specific configuration values to class attributes
+        self.name_net = activated_model  
         self.learning_rate = model_config['learning_rate']
         self.mean = model_config['mean']
         self.std = model_config['std']
         self.print_freq = model_config['print_freq']
-        self.name_net = model_name  # Use the passed model name directly
         self.batch_size = model_config['batch_size']
         self.num_workers = model_config['num_workers']
         self.epochs = model_config['epochs']
@@ -38,9 +39,7 @@ class Opt:
         return config
 
 # Initialize Opt
-# TODO: Temp fix model_name for easy debugging
-model_name = "unet"
 config_path = 'config/config.yaml' 
-opt = Opt(config_path, model_name)
+opt = Opt(config_path)
 
 print(f"Loaded configuration for model: {opt.name_net}")
