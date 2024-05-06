@@ -86,7 +86,7 @@ https://github.com/echonoshy/floodnet-segmentation/releases/tag/v0.1.0
 本次采用了UNet, PSPNet, DeepLab 3个模型进行训练，因为论文提到的PSPNet的效果最好，而DeepLab在训练、验证集上表现突出。
 通过对PSPNet模型训练40个epoch的情况下，他的dice指标在验证集上的效果10个epoch以后一直处于震荡状态，另外训练耗时确实有点慢，因为在其他2个模型的训练过程，均只采用15epoch进行训练。
 因为硬盘空间限制，这里只保存了每次的最好val_dice对应模型权重和最新一轮的模型权重。
-![PSPNet Val Dice]("https://github.com/echonoshy/floodnet-segmentation/blob/master/exp/model_pspnet/pspnet_val_dice.png")
+![PSPNet Val Dice](https://github.com/echonoshy/floodnet-segmentation/blob/master/exp/model_pspnet/pspnet_val_dice.png)
 
 
 ### 4.结果展示
