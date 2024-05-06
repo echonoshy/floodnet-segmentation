@@ -1,10 +1,12 @@
-# FloodNet Dataset Image Semantic Segmentation Technical Report
+Sure, here are some suggestions to add fun and relevant icons to your report:
 
-## Introduction
+# 🚀 FloodNet Dataset Image Semantic Segmentation Technical Report
+
+## 🌟 Introduction
 
 This code and its associated content were developed to implement an image semantic segmentation task on the supervised FloodNet dataset. The goal is to design a simple framework that allows for quick model construction, training, prediction, and visualization.
 
-### Experiment Environment
+### ⚙️ Experiment Environment
 - MacOS 14.4
 - Linux
   - PyTorch: 2.1.0
@@ -13,7 +15,7 @@ This code and its associated content were developed to implement an image semant
   - GPU: RTX 4090 (24GB) * 1
   - CPU: 12 vCPU Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz
 
-### Code Structure and Functionality
+### 🗂️ Code Structure and Functionality
 - `config`: Configuration files, containing model-related parameters and the currently selected model for training
 - `core`: Main training code for the models
 - `exp`: Generated training data files for the models (auto-generated)
@@ -25,12 +27,12 @@ This code and its associated content were developed to implement an image semant
 - `test.py`: Evaluates model performance on the test set
 - `visualize.py`: Visualizes model performance
 
-### Model Weights Download
+### 📦 Model Weights Download
 [Model Weights Download](https://github.com/echonoshy/floodnet-segmentation/releases/tag/v0.1.0)
 
 After downloading the models, verify the MD5 checksum, then place the model weights in the `exp/model_{model_name}` folder, such as `exp/model_deeplab/deeplab_best.pth`.
 
-### Quick Start
+### 🚀 Quick Start
 1. Modify dataset paths in `config` and set batch size according to your hardware. Set `activated_model` to specify which model to use for training, prediction, and visualization.
 2. Train the model:
    ```bash
@@ -45,7 +47,8 @@ After downloading the models, verify the MD5 checksum, then place the model weig
    python visualize.py
    ```
 
-## Overall Design Approach
+## 🛠️ Overall Design Approach
+
 From the beginning, I envisioned this as not just an experiment but a fully deployable application. The plan includes considerations that may not all be implemented in this version but will be updated incrementally:
 
 1. **Code Architecture Design:**
@@ -63,28 +66,29 @@ From the beginning, I envisioned this as not just an experiment but a fully depl
    - **Training Acceleration with Clustering:**
    - **Model Optimization:** Quantization, distillation, and ONNX conversion.
 
-## Experimental Process
+## 🔬 Experimental Process
 
-### 1. Data Preprocessing
+### 1. 📅 Data Preprocessing
 - **Data Cleaning:** Skipped as all data was already clean.
 - **Image Adjustment:** All images and labels were resized to 256x256 pixels to match model input sizes.
 - **Normalization:** Normalized images using dataset-specific means and standard deviations.
 - **Image Augmentation:** Used horizontal and vertical flipping.
 
-### 2. Evaluation Plan
+### 2. 📈 Evaluation Plan
 - **Metrics:**
   - **Dice Coefficient:** Used as the primary evaluation metric.
   - **mIoU:** Calculate mean IoU across batches.
 
 - **Visualization:** Qualitative comparison of model predictions against ground truth.
 
-### 3. Model Training
+### 3. 🔧 Model Training
 Three models were trained: UNet, PSPNet, and DeepLab. PSPNet performed best on the test set. However, the Dice metric fluctuated after 10 epochs, so only the best val_dice weights and the latest weights were saved for space reasons.
 
 ![PSPNet Val Dice](https://github.com/echonoshy/floodnet-segmentation/blob/master/exp/model_pspnet/pspnet_val_dice.png)
 
-### 4. Results Display
+### 4. 🖼️ Results Display
 1. Model performance:
+
 | Model       | Val-Dice | Test-Dice | Test-mIoU |
 |-------------|----------|-----------|-----------|
 | UNet        | 0.5354   | 0.4528    | 0.3234    |
@@ -96,16 +100,16 @@ PSPNet performed best, consistent with the FloodNet paper.
 2. Visualization:
 ![Inference Images](https://github.com/echonoshy/floodnet-segmentation/blob/master/inference_images/model_merged_images.jpg)
 
-## Reflection and Conclusion
+## 🤔 Reflection and Conclusion
 
-### Issues
+### ⚠️ Issues
 1. **Preprocessing:** Image scaling and translation could improve accuracy.
 2. **Training Parameters:** No experiments with different optimizers or learning rate strategies.
 3. **Class Imbalance:** Did not address class imbalance issues, affecting segmentation accuracy.
 4. **Hardware Constraints:** Encountered memory issues during training.
 5. **mIoU Calculation Error:** Fixed an error with mIoU calculation where missing classes caused a lower result.
 
-### Integration with DeepForest
+### 🌲 Integration with DeepForest
 
 **DeepForest** is a crown detection tool for aerial images that focuses on object detection rather than pixel-level segmentation. However, some potential approaches could integrate it with FloodNet:
 
@@ -121,6 +125,6 @@ PSPNet performed best, consistent with the FloodNet paper.
 4. **Fine-tuning and Expansion:**
    - Fine-tune DeepForest models for FloodNet data.
 
-### Conclusion
+### 🎯 Conclusion
 
 The code explored different semantic segmentation models on FloodNet, providing insights into model behavior and challenges in flood scenes. Future work should focus on improving preprocessing techniques and exploring model integration to enhance segmentation accuracy.
