@@ -1,141 +1,126 @@
+# FloodNet Dataset Image Semantic Segmentation Technical Report
 
-# FloodNet 数据集图像语义分割技术报告
+## Introduction
 
-## 简介
+This code and its associated content were developed to implement an image semantic segmentation task on the supervised FloodNet dataset. The goal is to design a simple framework that allows for quick model construction, training, prediction, and visualization.
 
-本套代码及相关内容是在FloodNet有监督数据集上实现图像语义分割任务，旨在设计一套通过快速构造不同模型，对数据集进行训练、预测和可视化的简易框架。
-
-
-### 实验环境
+### Experiment Environment
 - MacOS 14.4
+- Linux
+  - PyTorch: 2.1.0
+  - Python: 3.10 (Ubuntu 22.04)
+  - CUDA: 12.1
+  - GPU: RTX 4090 (24GB) * 1
+  - CPU: 12 vCPU Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz
 
-- Linux 
-    - PyTorch:  2.1.0
-    - Python:  3.10(ubuntu22.04)
-    - Cuda:  12.1
-    - GPU: RTX 4090(24GB) * 1
-    - CPU: 12 vCPU Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz
+### Code Structure and Functionality
+- `config`: Configuration files, containing model-related parameters and the currently selected model for training
+- `core`: Main training code for the models
+- `exp`: Generated training data files for the models (auto-generated)
+- `inference_images`: Images resulting from model predictions
+- `logs`: Logs of model training
+- `models`: Custom model architectures
+- `utils`: Auxiliary tools like dataset validation, independent of the main program
+- `train.py`: Model training script
+- `test.py`: Evaluates model performance on the test set
+- `visualize.py`: Visualizes model performance
 
+### Model Weights Download
+[Model Weights Download](https://github.com/echonoshy/floodnet-segmentation/releases/tag/v0.1.0)
 
-### 代码结构及功能介绍
-- config: 配置文件，模型相关的配置参数和指定当前需要训练的模型
-- core: 模型训练相关主要代码
-- exp: 模型训练数据生成文件（自动生成）
-- inference_images: 使用模型预测图片的结果图片
-- logs: 模型训练日志
-- models: 自定义模型结构
-- utils: 辅助工具，如数据集验证工具，与主程序无关
-- train.py: 模型训练脚本
-- test.py: 计算模型在测试集上效果
-- visualize.py: 模型效果可视化
+After downloading the models, verify the MD5 checksum, then place the model weights in the `exp/model_{model_name}` folder, such as `exp/model_deeplab/deeplab_best.pth`.
 
+### Quick Start
+1. Modify dataset paths in `config` and set batch size according to your hardware. Set `activated_model` to specify which model to use for training, prediction, and visualization.
+2. Train the model:
+   ```bash
+   nohup python train.py > 2>&1 &
+   ```
+3. Validate model metrics on the test set:
+   ```bash
+   python test.py
+   ```
+4. Visualize results with the current model:
+   ```bash
+   python visualize.py
+   ```
 
+## Overall Design Approach
+From the beginning, I envisioned this as not just an experiment but a fully deployable application. The plan includes considerations that may not all be implemented in this version but will be updated incrementally:
 
+1. **Code Architecture Design:**
+   - **Scalability:** A micro-framework that can be quickly adapted to different models for training, prediction, and visualization.
+   - **Configurability:** Unified configuration to accommodate various models and features with minimal impact on the main program.
+   - **Decoupling Functional Modules:** Separate different functions to make them more independent, increasing encapsulation and reducing redundancy.
 
-### 模型权重下载
-https://github.com/echonoshy/floodnet-segmentation/releases/tag/v0.1.0  
-模型下载后，请先校验md5，并将模型权重文件放置在`exp/model_{model_name}` 文件夹下， 如：`exp/model_deeplab/deeplab_best.pth`
+2. **Improve Model Performance: Data, Data, Data:**
+   - **Image Adjustment and Normalization:** Already implemented.
+   - **Image Augmentation:** Explore advanced augmentation methods like rotation and scaling using the `albumentations` library.
+   - **Incorporate Unlabeled Data:** Include unlabeled data for training with noise-student-training or rule-based selection.
+   - **Save More Model Weights:** Use techniques like average_model to improve performance.
 
+3. **Training and Deployment:**
+   - **Training Acceleration with Clustering:**
+   - **Model Optimization:** Quantization, distillation, and ONNX conversion.
 
-### 快速上手
-1. 修改config中数据集路径，根据机器配置设置batch size等配置。设置activated_model（当前训练、预测、可视化的所使用的模型）
-2. 模型训练：
-  `nohup python train.py > 2>&1 &`
-3. 使用模型在测试集上验证指标：
-  `python test.py`
-4. 使用当前模型可视化结果：
-  `python visualize.py`
+## Experimental Process
 
+### 1. Data Preprocessing
+- **Data Cleaning:** Skipped as all data was already clean.
+- **Image Adjustment:** All images and labels were resized to 256x256 pixels to match model input sizes.
+- **Normalization:** Normalized images using dataset-specific means and standard deviations.
+- **Image Augmentation:** Used horizontal and vertical flipping.
 
-## 整体设计思路
-在构思的初期，我其实并不止想把这个当成一个实验来做，而是想把它做成一个能够工业落地应用的应用来做。因此考虑的情况更多一些，这些功能不一定在这个版本都全部实现，如果可以的话会进行一些增量式的更新：
-1. 代码架构设计模块：
-  - 可扩展性：一套微型框架，稍加改造能够快速部署不同模型，用来快速实现不同模型的训练、预测和可视化功能
-  - 可配置性：通过统一的配置入口，尽量少影响主程序的情况下支持各种模型、功能、配置的接入和变更
-  - 功能模块的解耦： 尽量将不同功能进行拆分，使功能更加独立，增加封装减少重复
+### 2. Evaluation Plan
+- **Metrics:**
+  - **Dice Coefficient:** Used as the primary evaluation metric.
+  - **mIoU:** Calculate mean IoU across batches.
 
-2. 提升模型效果: 数据、数据、还是数据。
-依据我之前的项目经验来说，数据质量和数据对了一个模型效果的好坏起了绝大部分的作用。除了保证训练数据尽可能干净以外，还可以多尝试一些新的方案：
-  - 图像调整和归一化 （已使用）  
-  - 图像数据增强：除了使用的水平、竖直翻转外。 如使用albumentations库进行旋转、缩放平移（差值）等更复杂的增强方案。
-  - 使用未标注数据加入训练，如noise-student-training方案，或者通过设计一些其他人工设定的规则对数据筛选后再进行训练。（之前我做语音模型的时候，采用过很多无监督数据基于规则的筛选后进行训练）
-  - 保存更多的模型权重，使用average_model 这种被证实有效的trick
+- **Visualization:** Qualitative comparison of model predictions against ground truth.
 
+### 3. Model Training
+Three models were trained: UNet, PSPNet, and DeepLab. PSPNet performed best on the test set. However, the Dice metric fluctuated after 10 epochs, so only the best val_dice weights and the latest weights were saved for space reasons.
 
-3. 训练和部署
-  - 使用集群进行训练加速
-  - 对模型进行量化、蒸馏，转码成onnx加速等
-  
-
-## 实验过程
-### 1.数据预处理
-- 数据清洗：通过脚本检测过以后，数据均为干净的数据，因此这里省略
-- 图像调整： 所有图像和标签都调整为 256x256 像素，以匹配不同模型的输入尺寸。
-- 归一化： 使用数据集特定的均值和标准差对图像进行归一化，保持数据集中在像素值相似的范围内缩放，帮助模型训练。
-- 图像增强： 本次实验对图像进行水平、竖直翻转。
-
-### 2.评估方案
-
-- **指标**：
-  - **Dice 系数**：在训练过程中使用Dice系数作为衡量模型好坏的指标。
-  - **mIoU**：在预测时计算不同Batch上的平均Dice和所有分类的平均mIoU.
-
-- **可视化**：为了进行定性比较，将模型的预测结果与输入图像和真实标签并排显示。
-
-### 3.模型训练
-本次采用了UNet, PSPNet, DeepLab 3个模型进行训练，因为论文提到的PSPNet的效果最好，而DeepLab在训练、验证集上表现突出。
-通过对PSPNet模型训练40个epoch的情况下，他的dice指标在验证集上的效果10个epoch以后一直处于震荡状态，另外训练耗时确实有点慢，因为在其他2个模型的训练过程，均只采用15epoch进行训练。
-因为硬盘空间限制，这里只保存了每次的最好val_dice对应模型权重和最新一轮的模型权重。
 ![PSPNet Val Dice](https://github.com/echonoshy/floodnet-segmentation/blob/master/exp/model_pspnet/pspnet_val_dice.png)
 
-
-### 4.结果展示
-1. 3个模型的效果表现如下：
-
+### 4. Results Display
+1. Model performance:
 | Model       | Val-Dice | Test-Dice | Test-mIoU |
 |-------------|----------|-----------|-----------|
 | UNet        | 0.5354   | 0.4528    | 0.3234    |
 | PSPNet      | 0.6387   | 0.5825    | 0.4732    |
 | DeepLab V3  | 0.6258   | 0.5636    | 0.4259    |
 
-其中PSPNet在测试集上的表现最好，这一点与FloodNet论文作者提到的结果类似。
+PSPNet performed best, consistent with the FloodNet paper.
 
-
-2. 可视化结果  
+2. Visualization:
 ![Inference Images](https://github.com/echonoshy/floodnet-segmentation/blob/master/inference_images/model_merged_images.jpg)
 
+## Reflection and Conclusion
 
+### Issues
+1. **Preprocessing:** Image scaling and translation could improve accuracy.
+2. **Training Parameters:** No experiments with different optimizers or learning rate strategies.
+3. **Class Imbalance:** Did not address class imbalance issues, affecting segmentation accuracy.
+4. **Hardware Constraints:** Encountered memory issues during training.
+5. **mIoU Calculation Error:** Fixed an error with mIoU calculation where missing classes caused a lower result.
 
-## 实验的反思与总结
-### 存在的问题
-1. 在数据预处理的过程中，还有很多值得提高的地方。包括对原数据的缩放、平移等等，这些都可能是很有可能提升准确率的地方。
-2. 数据训练过程中，没有尝试更多的参数改变，比如针对学习率的WarmUP等操作，选择不同的优化器，训练的Epoch增加，使用更优雅的TensorBoard来记录学习率变化。
-3. 没有更多的去关注样本数据的类别不平衡问题，尤其是小目标或较小出现的类似，这对模型的分割准确度产生了影响。
-4. 由于硬件限制，在训练过程中出现的内存问题等等。
-5. 在计算mIoU的过程中，我犯了一个错，计算mIoU时可能会因为某些类在标签和预测结果中都不存在而导致结果被偏低，调整了才发现这个问题。
+### Integration with DeepForest
 
+**DeepForest** is a crown detection tool for aerial images that focuses on object detection rather than pixel-level segmentation. However, some potential approaches could integrate it with FloodNet:
 
-### 关于如何与DeepForest库结合的思考
+1. **Crown Detection and Segmentation:**
+   - Use DeepForest to identify tree regions and improve segmentation of vegetation.
 
-DeepForest 是一种基于目标检测的工具，主要用于检测航拍图像中的树冠对象。它与 FloodNet 数据集上的语义分割任务直接集成存在挑战，因为它聚焦于目标检测而不是完整的像素级分割。
-但是我有一些未经证实的思路：
-1. 树冠检测与分割相结合：
-使用DeepForest 检测航拍图像中的树冠对象，以识别图像中的树木区域。
-在 FloodNet 数据集中，这些树木区域可能对分类不同的植被、树冠或物体很有用。将这些检测到的边界框信息作为分割模型的输入，以提高对这些区域的分割效果。
+2. **Object Detection and Data Annotation:**
+   - Use DeepForest to pre-label FloodNet images.
 
-2. 目标检测与数据标注：
-使用 DeepForest 模型来预标注 FloodNet 数据集的航拍图像，生成初步的树木检测标注结果。
-将这些标注结果作为辅助信息，以改进 FloodNet 数据集的标注，或在数据集上进一步优化语义分割模型。
+3. **Feature Fusion:**
+   - Use detection features as additional inputs for semantic segmentation.
 
-3. 特征融合：
-利用 DeepForest 模型的检测特征，将其作为额外的特征输入语义分割模型，或在训练中添加目标检测任务，改进 FloodNet 数据集的目标分割。
+4. **Fine-tuning and Expansion:**
+   - Fine-tune DeepForest models for FloodNet data.
 
-4. 微调和扩展：
-微调 DeepForest 的预训练模型，使其更适应 FloodNet 数据集中的数据特点。
-利用 FloodNet 数据集的标注信息，扩展并改进 DeepForest 模型，形成更有效的目标检测和分割方法。
+### Conclusion
 
-
-### 结论
-这次实验代码，探索了不同语义分割模型在FloodNet数据集上的表现，尽管它们在不同的类别上的表现各有不同。通过定量分析和可视化，为理解模型行为和洪水场景中的挑战提供了一些见解。
-未来的工作应侧重于改进预处理技术，并探索模型集成方法以提高分割准确性。
-
+The code explored different semantic segmentation models on FloodNet, providing insights into model behavior and challenges in flood scenes. Future work should focus on improving preprocessing techniques and exploring model integration to enhance segmentation accuracy.
