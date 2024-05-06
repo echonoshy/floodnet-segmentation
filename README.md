@@ -1,10 +1,8 @@
-Sure, here are some suggestions to add fun and relevant icons to your report:
-
 # 🚀 FloodNet Dataset Image Semantic Segmentation Technical Report
 
 ## 🌟 Introduction
 
-This code and its associated content were developed to implement an image semantic segmentation task on the supervised FloodNet dataset. The goal is to design a simple framework that allows for quick model construction, training, prediction, and visualization.
+The development of this code and its related content was aimed at implementing an image semantic segmentation task on the supervised FloodNet dataset. The goal was to design a simple framework that allows for quick model construction, training, prediction, and visualization. Experiments were conducted using three classic semantic segmentation models, and good predictive results were achieved with relatively few training epochs.
 
 ### ⚙️ Experiment Environment
 - MacOS 14.4
