@@ -37,7 +37,7 @@ pspnet:
   name_net: 'pspnet'
   batch_size: 128
   num_workers: 8
-  epochs: 2
+  epochs: 40
   num_classes: 10
   resize_height: 256
   resize_width: 256
