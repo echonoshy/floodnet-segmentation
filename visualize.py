@@ -24,7 +24,7 @@ custom_colors = [
 custom_cmap = ListedColormap(custom_colors)
 
 # Function to unnormalize a tensor image
-def unnormalize(tensor, mean=[-0.2417, 0.8531, 0.1789], std=[0.9023, 1.1647, 1.3271]):
+def unnormalize(tensor, mean=[0.4093, 0.4471, 0.3405], std=[0.1914, 0.1762, 0.1936]):
     mean = torch.tensor(mean, device=tensor.device, dtype=tensor.dtype)
     std = torch.tensor(std, device=tensor.device, dtype=tensor.dtype)
     return tensor * std + mean
